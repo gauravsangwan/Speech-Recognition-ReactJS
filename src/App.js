@@ -16,30 +16,35 @@ import * as speech from '@tensorflow-models/speech-commands';
 function App() {
 
   //>create model and action states
-  const[model,setModel] = useState(null);
-  const[action,setAction] = useState(null);
-  const[labels,setLabels]= useState(null);
+  const [model,setModel] = useState(null)
+  const [action,setAction] = useState(null)
+  const [labels,setLabels]= useState(null)
   //>create recognizerr
 
   const loadModel = async() =>{
-    const recognizer = await speech.create("BROWSER_FFT");
+    const recognizer = await speech.create("BROWSER_FFT")
     console.log("Model Loaded Successfully !!!")
     await recognizer.ensureModelLoaded()
     console.log(recognizer.wordLabels())
     setModel(recognizer)
-    setLabels(recognizer.wordLabels);
+    setLabels(recognizer.wordLabels())
   }
 
   useEffect(()=>{loadModel()},[]);
 
-
+  function argMax(arr){
+    return arr.map((x,i)=>[x,i]).reduce((r,a)=>(a[0]>r[0]?a:r))[1];
+  }
   //>listen for action
 
   const recognizeCommands = async ()=>{
     console.log('I am listening for commands ')
     model.listen(result=>{
-      console.log(result.scores)
+      console.log(result)
+      setAction(labels[argMax(Object.values(result.scores))])
+      console.log(action)
     },{includeSpectrogram:true,probabilityThreshold: 0.9})
+    setTimeout(()=>model.stopListening(),10e3)
   } 
 
 
@@ -53,7 +58,12 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
 
-        {/*//>display command on screen*/}
+    
+        <button onClick={recognizeCommands}>Command Input</button>
+        {action 
+          ? <div>{action}</div>
+          : <div>No Action Detected</div>
+        }
 
       </header>
     </div>
