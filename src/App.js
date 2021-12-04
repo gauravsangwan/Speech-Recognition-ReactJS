@@ -13,17 +13,32 @@ import * as speech from '@tensorflow-models/speech-commands';
 
 
 
-const App = () => {
+function App() {
 
   //>create model and action states
   const[model,setModel] = useState(null);
   const[action,setAction] = useState(null);
   const[labels,setLabels]= useState(null);
   //>create recognizerr
+
+  const loadModel = async() =>{
+    const recognizer = await speech.create("BROWSER_FFT");
+    console.log("Model Loaded Successfully !!!")
+    await recognizer.ensureModelLoaded()
+    console.log(recognizer.wordLabels())
+    setModel(recognizer)
+    setLabels(recognizer.wordLabels);
+  }
+
+  useEffect(()=>{loadModel()},[]);
+
+
   //>listen for action
-  //>display command on screen
 
   
+  //>display command on screen
+
+
 
   return (
     <div className="App">
