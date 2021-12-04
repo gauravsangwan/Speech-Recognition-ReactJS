@@ -1,7 +1,7 @@
 >Import Dependency - DOne
 >create model and action states - Done
 >create recognizerr - Done
->listen for action
+>listen for action - Done
 >display command on screen
 
 
@@ -27,3 +27,6 @@ Model Can recognize these commands
 17: "up"
 18: "yes"
 19: "zero"
+
+
+Probability Threshhold Selected : 0.9

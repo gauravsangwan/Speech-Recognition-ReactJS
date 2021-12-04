@@ -35,8 +35,13 @@ function App() {
 
   //>listen for action
 
-  
-  //>display command on screen
+  const recognizeCommands = async ()=>{
+    console.log('I am listening for commands ')
+    model.listen(result=>{
+      console.log(result.scores)
+    },{includeSpectrogram:true,probabilityThreshold: 0.9})
+  } 
+
 
 
 
@@ -47,14 +52,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        {/*//>display command on screen*/}
+
       </header>
     </div>
   );
