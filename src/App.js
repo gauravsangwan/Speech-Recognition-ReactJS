@@ -53,13 +53,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1> Speech To Text Converstion using tensorflowJS | Gaurav Sangwan</h1>
+        <p>This ReactJS application can convert following sounds to text , zero to nine and go,stop,up,down,left,right,yes,no and two more possibilities of Unknown noises and background noise.   </p>
 
-    
-        <button onClick={recognizeCommands}>Command Input</button>
+
+        <button onClick={recognizeCommands} >Command Input</button>
         {action 
           ? <div>{action}</div>
           : <div>No Action Detected</div>
