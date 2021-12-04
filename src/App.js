@@ -1,7 +1,30 @@
+import React,{useEffect, useState} from "react"; 
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+//>Import Dependency
+import * as tf from '@tensorflow/tfjs';
+import * as speech from '@tensorflow-models/speech-commands';
+
+
+
+
+
+
+
+
+const App = () => {
+
+  //>create model and action states
+  const[model,setModel] = useState(null);
+  const[action,setAction] = useState(null);
+  const[labels,setLabels]= useState(null);
+  //>create recognizerr
+  //>listen for action
+  //>display command on screen
+
+  
+
   return (
     <div className="App">
       <header className="App-header">
