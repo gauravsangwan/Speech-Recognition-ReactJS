@@ -5,6 +5,11 @@
 - listen for action : Done
 - display command on screen : done
 
+## Screen shot of the model
+
+
+![alt text](https://github.com/gauravsangwan/Speech-Recognition-ReactJS/blob/master/SpeecRecog.png?raw=true)
+
 
 ## Model Can recognize these commands
 - "_background_noise_"
